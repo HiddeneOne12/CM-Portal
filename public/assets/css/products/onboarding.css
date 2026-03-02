@@ -1,0 +1,528 @@
+.ob-page-main-wrapper {
+    background: #f5f6f8;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* on boarding screen - header */
+.ob-header {
+    height: 66px;
+}
+
+.ob-header-logo-div {
+    padding: 17px 24px;
+    border-right: 1px solid #ececec;
+}
+
+.ob-header-progress-bar {
+    min-width: 252px;
+    height: 16px;
+    /* Adjust height as needed */
+    border-radius: 1rem;
+    /* Rounded corners */
+    background-color: #f0f0f0;
+    /* Empty color */
+    overflow: hidden;
+    /* Ensure the inner bar does not exceed rounded corners */
+}
+
+.ob-header-progress-bar .progress-bar {
+    background-color: #eb662b;
+    /* Fill color */
+    border-radius: 1rem;
+    /* Rounded edges for the inner bar */
+}
+
+.ob-header-progress-bar-text {
+    color: #05073c;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* onboarding screen - main heading */
+.ob-page-main-heading {
+    color: #05073c;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.ob-page-main-body {
+    padding: 20px 25px;
+}
+
+/* onboarding screen - tab */
+.ob-tab-bar-container {
+    border-radius: 6px;
+    background: #fff;
+    /* width: 100%; */
+    min-height: 75dvh;
+}
+
+.ob-tab-bar-wrapper {
+    max-width: 100%;
+    overflow: auto;
+    /* Enable horizontal scrolling */
+    overflow-x: auto;
+    white-space: nowrap;
+
+    /* Optional: Smooth scroll behavior */
+    scroll-behavior: smooth;
+
+    /* Optional: Hide scrollbar in Webkit browsers (Chrome, Safari) */
+    -webkit-overflow-scrolling: touch;
+}
+
+.ob-tab-bar {
+    border-radius: 6px;
+    background: #f5f6f8;
+    padding: 10x 20px;
+    min-width: max-content;
+}
+
+.ob-tab-bar-wrapper::-webkit-scrollbar {
+    height: 2px;
+    /* Adjust scrollbar height */
+}
+
+.ob-tab-bar-wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(0,
+            0,
+            0,
+            0.2);
+    /* Customize the scrollbar thumb color */
+    border-radius: 10px;
+}
+
+.ob-tab-bar-item {
+    cursor: pointer;
+}
+
+.ob-tab-bar-item-fade {
+    opacity: 0.5 !important;
+}
+
+.ob-tab-bar-number {
+    padding-top: 4px;
+    background-color: #fff;
+    border: 1px solid #ececec;
+    text-align: center;
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    color: #eb662b;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.ob-tab-bar-number-active {
+    border: 1px solid #eb662b !important;
+    background: #eb662b !important;
+    color: #fff !important;
+}
+
+.ob-tab-bar-text {
+    color: #05073c;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    /* font-weight: bold; */
+    padding-top: 5px;
+}
+
+.ob-tab-bar-text-active {
+    color: #eb662b;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    padding-top: 5px;
+}
+
+.ob-tab-bar-dots-active {
+    color: #eb662b;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.ob-tab-bar-dots {
+    color: #cecece;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* onboarding screen - tab content */
+.ob-supplier-content-heading {
+    color: #05073c;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    /* text-align: center; */
+}
+
+.ob-supplier-content-form {
+    /* max-width: 900px; */
+}
+
+.ob-supplier-radio-item {
+    border-radius: 4px;
+    border: 1px solid #ececec;
+    padding: 10px 0px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out;
+}
+
+.ob-supplier-radio-item-disabled {
+    opacity: 0.5;
+}
+
+.ob-supplier-radio-item:hover {
+    border-color: #eb662b;
+    /* Change border color on hover */
+}
+
+.radio-button {
+    accent-color: #eb662b;
+    /* Custom color for radio button */
+}
+
+.radio-button .form-check-input:checked {
+    background-color: #eb662b;
+    border-color: #eb662b;
+}
+
+.radio-button .form-check-input:focus {
+    border-color: #eb662b;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(226, 94, 33, 0.25);
+}
+
+.ob-supplier-radio-item-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.ob-supplier-radio-item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    width: 52px;
+    height: 42px;
+    /* Adjust size as needed */
+    margin-right: 16px;
+}
+
+.ob-supplier-radio-item-icon image {
+    background: transparent;
+}
+
+.ob-supplier-radio-item-text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.ob-supplier-radio-item-text1 {
+    color: #05073c;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.ob-supplier-radio-item-text2 {
+    color: rgba(5, 7, 60, 0.7);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.ob-supplier-radio-item-text2 p {
+    padding: 0px;
+    margin: 0px;
+}
+
+/* onboarding screen - public information form */
+.ob-pi-form-container {
+    /* max-width: 900px; */
+    /* min-width: 900px; */
+    padding: 20px 0px;
+}
+
+.ob-pi-form-heading {
+    color: #05073c;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.ob-pi-form-description {
+    color: rgba(5, 7, 60, 0.7);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.ob-pi-input {
+    border-radius: 4px !important;
+    height: 42px;
+    border: 1px solid #ececec !important;
+    background: #fff !important;
+    color: rgba(5, 7, 60, 1) !important;
+    font-size: 15px !important;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.ob-pi-otp-input {
+    border-radius: 4px !important;
+    height: 40px;
+    width: 40px !important;
+    /* margin-right: 8px !important; */
+    border: 1px solid #ececec !important;
+    background: #fff !important;
+    color: rgba(5, 7, 60, 1) !important;
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.ob-pi-textarea {
+    border-radius: 4px;
+    min-height: 125px;
+    height: 125px;
+    border: 1px solid #ececec !important;
+    background: #fff !important;
+    color: rgba(5, 7, 60, 1);
+    font-size: 14px !important;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.ob-pi-label {
+    color: #05073c;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0px;
+    padding: 0px;
+}
+
+.ob-pi-btn {
+    background-color: #eb662b;
+    color: #fff;
+    border-radius: 25px;
+    padding: 16px 20px;
+    border: none;
+}
+
+.ob-pi-btn-back {
+    background-color: transparent;
+    color: #333;
+    border: none;
+}
+
+.ob-pi-dropdown {
+    background: white;
+    border: 1px solid #ececec;
+    border-radius: 4px;
+    color: rgba(5, 7, 60, 0.5);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    height: 35px;
+}
+
+.ob-pi-logo-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    border: 1px dashed #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    color: #666;
+    cursor: pointer;
+}
+
+.ob-pi-note {
+    color: rgba(5, 7, 60, 0.7);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.ob-pi-logo-upload {
+    border: 1px solid #ececec;
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    height: 108px;
+    text-align: center;
+    cursor: pointer;
+    color: #999;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.ob-pi-logo-add-icon {
+    width: 48.154px;
+    height: 48.154px;
+    border-radius: 50%;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ob-pi-logo-preview {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.ob-pi-logo-image {
+    width: 200px !important;
+    height: 170px;
+    object-fit: cover;
+    object-position: center;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.ob-pi-logo-delete-icon {
+    top: 5px;
+    right: 5px;
+    font-size: 1.2rem;
+    color: #ff4d4f;
+    cursor: pointer;
+}
+
+.ob-pi-logo-upload-text {
+    color: #05073c;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.ob-pi-checkbox .form-check-input:checked {
+    background-color: #ff4d4f;
+    border-color: #ff4d4f;
+}
+
+.form-check-input:focus {
+    border-color: #fe9486;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(253, 69, 13, 0.25);
+}
+
+.ob-having-trouble-card {
+    max-width: 100%;
+    width: 400px;
+    /* min-width: 320px; */
+    border-radius: 6px;
+    background: #fff;
+    padding: 30px;
+}
+
+.ob-having-trouble-card-heading {
+    text-align: center;
+    color: #05073c;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.ob-having-trouble-card-description {
+    color: rgba(5, 7, 60, 0.7);
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.ob-having-trouble-card-btn {
+    border-radius: 40px;
+    border: 1px solid #eb662b;
+    background: #eb662b;
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    padding: 10px 28px;
+}
+
+.css-1xc3v61-indicatorContainer,
+.css-1wy0on6 {
+    display: none !important;
+}
+
+.css-b62m3t-container {
+    border: none !important;
+}
+
+.select-icon {
+    margin-right: 15px;
+}
+
+.select-icon svg {
+    font-size: 16px;
+    color: #212529;
+}
+
+.ob-pc-add-another-email-btn {
+    border-radius: 40px !important;
+    border: 1px solid #eb662b !important;
+    background: #eb662b !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    padding: 3px 18px !important;
+    text-decoration: none !important;
+    position: absolute !important;
+    right: 0px !important;
+    top: 0px !important;
+}
+
+@media screen and (max-width: 1100px) {
+    .ob-having-trouble-card {
+        width: 100%;
+    }
+
+    .ob-tab-bar-container {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .ob-pi-form-container {
+        width: 100% !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .ob-header {
+        height: 100%;
+    }
+
+    .ob-header-logo-div {
+        border: none;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .ob-header-progress-bar {
+        min-width: 120px;
+    }
+}

@@ -1,0 +1,40 @@
+/* Wix Madefor Display Font - Local */
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('wix-madefor-display-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('wix-madefor-display-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('wix-madefor-display-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('wix-madefor-display-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Wix Madefor Display';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('wix-madefor-display-800.woff2') format('woff2');
+}

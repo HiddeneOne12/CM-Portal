@@ -1,0 +1,310 @@
+.pickup-form {
+    background-color: white;
+    padding: 20px;
+}
+
+/* Main Heading */
+.pickup-main-heading {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Radio Buttons */
+.pickup-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.pickup-radio-option {
+    display: flex;
+    align-items: center;
+}
+
+.pickup-radio-input {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.pickup-radio-input:checked {
+    border-color: var(--primary-color);
+    background-color: white;
+}
+
+.pickup-radio-input:checked::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pickup-radio-label {
+    font-size: 1rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Pickup Area Section */
+.pickup-area-section {
+    background-color: var(--gray-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.pickup-area-heading {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.pickup-area-subtitle {
+    font-size: 0.875rem;
+    color: var(--gray-medium);
+    margin: 0 0 1rem 0;
+}
+
+.pickup-area-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Comments Section */
+.pickup-comments-section {
+    background-color: var(--gray-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.pickup-comments-heading {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin: 0 0 0.5rem 0;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pickup-optional-tag {
+    color: var(--gray-medium);
+    font-weight: normal;
+    font-size: 0.875rem;
+}
+
+.pickup-comments-subtitle {
+    font-size: 0.875rem;
+    color: var(--gray-medium);
+    margin: 0 0 1rem 0;
+}
+
+.pickup-comments-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Add Another Button */
+.pickup-add-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--gray-light);
+    border: none;
+    padding: 1rem;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.pickup-add-icon {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+/* Info Message */
+.pickup-info-message {
+    background-color: white;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pickup-info-text {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 0.875rem;
+}
+
+.pickup-info-close {
+    background: none;
+    border: none;
+    color: var(--gray-medium);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+/* Focus States */
+.pickup-area-input:focus,
+.pickup-comments-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+/* Hover States */
+.pickup-add-button:hover {
+    background-color: #f0f0f0;
+}
+
+.pickup-info-close:hover {
+    color: var(--text-color);
+}
+
+.container {
+    /* max-width: 800px; */
+}
+
+.icon-circle {
+    width: 32px;
+    height: 32px;
+    background-color: #ff6b35;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-circle i {
+    color: white;
+    font-size: 12px;
+}
+
+.content-section {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+/* Custom Select Styling */
+.custom-select-container {
+    position: relative;
+}
+
+.custom-select {
+    width: 100%;
+    position: relative;
+}
+
+.selected-option {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.selected-option .btn-close {
+    font-size: 0.7rem;
+    padding: 0.25rem;
+}
+
+.options-container {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-top: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    z-index: 1000;
+}
+
+.options-container.show {
+    display: block;
+}
+
+.option-item {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.option-item:hover {
+    background-color: #fff8f5;
+}
+
+.option-item.selected {
+    background-color: #ffe8e0;
+}
+
+/* Experience Option Styling */
+.experience-option {
+    border-top: 1px solid #dee2e6;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+.form-check-label {
+    cursor: pointer;
+    padding-left: 0.5rem;
+}
+
+.form-check-input:checked {
+    background-color: #ff6b35;
+    border-color: #ff6b35;
+}
+
+/* Typography */
+h5 {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+h6 {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.text-muted {
+    color: #6c757d !important;
+    font-size: 0.9rem;
+}

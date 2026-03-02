@@ -1,0 +1,134 @@
+.tooltip {
+    max-width: 221px;
+    background-color: #f5f6f8 !important;
+    color: #05073c !important;
+    font-size: 16px !important;
+    font-style: normal !important;
+    font-weight: 300 !important;
+    border-radius: 4px !important;
+    padding: 8px !important;
+}
+
+.submit-btn {
+    background-color: #eb662b;
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    border-radius: 40px;
+    padding: 10px 32px;
+    border: none;
+}
+
+.back-btn {
+    background: white;
+    border-radius: 40px;
+    border: 1px solid #05073c;
+    padding: 10px 28px;
+    color: #05073c;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.invalid-feedback {
+    font-size: 16px !important;
+}
+
+/* Hide arrows for Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide arrows for Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.css-13cymwt-control {
+    height: 42px !important;
+    border: 1px solid #ececec !important;
+    background: #fff !important;
+    font-size: 15px !important;
+    font-weight: 300 !important;
+    color: rgba(5, 7, 60, 0.7) !important;
+}
+
+.css-13cymwt-control:hover,
+.css-t3ipsp-control {
+    border: 1px solid #eb662b !important;
+    box-shadow: none !important;
+    min-height: 42px !important;
+    background-color: transparent !important;
+}
+
+.form-control {
+    /* height: 42px; */
+    font-size: 15px !important;
+    font-weight: 300 !important;
+    box-shadow: none !important;
+}
+
+.form-control:focus {
+    border: 1px solid #eb662b !important;
+}
+
+.css-tr4s17-option {
+    background-color: #eb662b !important;
+}
+
+.form-check-input {
+    margin-top: 0.15rem !important;
+}
+
+.css-d7l1ni-option {
+    background-color: #eb652b1a !important;
+}
+
+.tox .tox-edit-area::before {
+    border: 1px solid #eb662b !important;
+}
+
+.modal-dialog {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.fp-filters-dropdown .css-1xc3v61-indicatorContainer,
+.css-1wy0on6 {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.flatpickr-months .flatpickr-month,
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-weekdays,
+span.flatpickr-weekday {
+    background: #eb662b !important;
+    color: #fff !important;
+}
+
+.flatpickr-calendar.arrowTop:before {
+    border-bottom-color: #eb662b !important;
+}
+
+.flatpickr-calendar.arrowTop:after {
+    border-bottom-color: #eb662b !important;
+}
+
+.dropdown-item:active {
+    background-color: #eb662b !important;
+}
+
+.dropdown-item:hover {
+    background-color: #eb662b !important;
+    color: white !important;
+}
+
+.css-15lsz6c-indicatorContainer {
+    display: none !important;
+}

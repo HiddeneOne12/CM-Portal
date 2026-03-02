@@ -1,0 +1,110 @@
+@media only screen and (max-width: 1920px) {
+.banner-area {
+    padding: 170px 0 0 0;
+}
+}
+@media only screen and (max-width: 1800px) {
+}
+@media only screen and (max-width: 1600px) {
+
+.banner-area {
+    padding: 70px 0 0 0;
+}
+}
+
+@media only screen and (max-width: 1281px) {
+}
+@media only screen and (max-width: 1200px) {
+}
+@media screen and (max-width: 1025px){
+	.owl-theme .owl-controls .owl-page span {
+    display: block;
+    width: 6px;
+    height: 6px;
+}
+	.right-align {
+    text-align: center;
+}
+	.right-align a{float:none}
+    .item1 img {
+    height: auto;
+    width: 100% !important;
+    background: #b3863f;
+    margin: 0 auto !important;
+}
+	.main-nav {
+    display: none;
+}
+.sticky-main-menu {
+    display: none;
+}
+.row .col.s10 {
+    width: 100% !important;
+}
+.row .col.s6 {
+    width: 100% !important;
+}
+.banner-heading h2 {
+    font-size: 30px;
+}
+.banner-area h1 {
+    font-size: 40px;
+    padding: 20px 0 0;
+}
+.heading {
+    font-size: 40px;
+}
+.counter > div > div > div:nth-child(1) > div {
+    display: none;
+}
+.counters {
+    border-right: none;
+}
+.our-goals, .our-members, .happiness-needs, .our-teams, .ahmed, .partners {
+    padding: 20px 20px;
+}
+
+.footer1{text-align:center;}
+.footer2{text-align:center;}
+
+.item1 img {
+    height: auto;
+    width: 100%;
+    background: #b3863f;
+}
+  }
+@media only screen and (max-width: 992px) {
+.item1 img {
+    height: auto;
+    width: 100%;
+    background: #b3863f;
+    margin: 0 auto;
+}
+
+}
+@media only screen and (max-width: 768px) {
+    .item1 img {
+    height: auto;
+    width: 100%;
+    background: #b3863f;
+    margin: 0 auto;
+}
+}
+@media only screen and (max-width: 480px) {
+    .item1 img {
+    height: auto;
+    width: 100%;
+    background: #b3863f;
+    margin: 0 auto;
+}
+}
+@media only screen and (max-width: 320px) {
+}
+.item1 img {
+    height: auto;
+    width: 100%;
+    background: #b3863f;
+    margin: 0 auto;
+}
+@media not all, only screen and (min--moz-device-pixel-ratio: 2), not all, not all, only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+}

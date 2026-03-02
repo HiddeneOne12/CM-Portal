@@ -1,0 +1,160 @@
+/* CM Portal Admin - Global scheme (frontend primary #483183) - login, dashboard, all modules */
+:root,
+[data-bs-theme="light"] {
+    --bs-primary: #483183;
+    --bs-primary-rgb: 72, 49, 131;
+    --bs-primary-text-emphasis: #1d1234;
+    --bs-primary-bg-subtle: #ede8f5;
+    --bs-primary-border-subtle: #c9b8e8;
+    /* Override theme (e.g. sky-blue) so header matches frontend */
+    --bs-header-bg-color: #483183;
+    --bs-header-navs-tab-color-default: rgba(255, 255, 255, 0.85);
+    --bs-header-navs-tab-color-hover: #ffffff;
+    --bs-header-navs-tab-color-active: #483183;
+    --bs-header-navs-bg-color: #ffffff;
+    /* Dropdown selected item = primary (not blue) */
+    --bs-dropdown-link-active-color: #483183;
+    --bs-dropdown-link-active-bg: #ede8f5;
+}
+
+/* Header bar - frontend primary (force override) */
+#kt_header.header,
+.header,
+.header .header-top,
+.header.header-top {
+    background-color: #483183 !important;
+}
+/* Header logo white on purple (same as login screen) */
+#kt_header .admin-header-logo {
+    filter: brightness(0) invert(1);
+}
+
+/* Login right panel - global primary */
+.login-bg {
+    background-color: #483183 !important;
+}
+/* Logo on purple: make it white so "CyberMajlis" text is visible */
+.login-brand-panel .login-panel-logo {
+    filter: brightness(0) invert(1);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #483183 !important;
+    border-color: #483183 !important;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #5c3fa8 !important;
+    border-color: #5c3fa8 !important;
+}
+
+/* Header nav: inactive = white; selected = primary on white */
+#kt_header .header-tabs .nav-link {
+    color: #ffffff !important;
+}
+#kt_header .header-tabs .nav-link.active {
+    color: #483183 !important;
+}
+
+/* Bullet and accents */
+.bullet.bg-primary {
+    background-color: #483183 !important;
+}
+
+/* Nav dropdown in header - ensure it opens and is visible */
+#kt_header,
+#kt_header .header-top,
+#kt_header .header-tabs,
+#kt_header #kt_brand_tabs {
+    overflow: visible;
+}
+#kt_header .dropdown-menu {
+    z-index: 1060;
+}
+#kt_header .dropdown.show .dropdown-menu {
+    display: block;
+}
+#kt_header .nav {
+    flex-wrap: nowrap;
+}
+/* ACL dropdown: padding like Dashboard tab, white when not clicked */
+#kt_header .nav-item.dropdown button.nav-link.dropdown-toggle {
+    cursor: pointer;
+    color: #ffffff !important;
+    font-size: inherit;
+    font-weight: inherit;
+    padding: 0.65rem 1.1rem !important;
+    border-radius: 0.475rem 0.475rem 0 0;
+}
+/* Hover when not open: slight white background, text stays white */
+#kt_header .nav-item.dropdown:not(.show) button.nav-link.dropdown-toggle:hover,
+#kt_header .nav-item.dropdown:not(.show) button.nav-link.dropdown-toggle:focus {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.15) !important;
+}
+/* When ACL dropdown is open (.show) - same look as Dashboard active: white bg, theme text */
+#kt_header .nav-item.dropdown.show button.nav-link.dropdown-toggle {
+    color: #483183 !important;
+    background-color: #ffffff !important;
+}
+#kt_header .nav-item.dropdown.show button.nav-link.dropdown-toggle:hover {
+    color: #483183 !important;
+    background-color: #ffffff !important;
+}
+/* Dropdown menu: selected item primary color (override blue) */
+#kt_header .dropdown-menu .dropdown-item.active {
+    color: #483183 !important;
+    background-color: #ede8f5 !important;
+}
+#kt_header .dropdown-menu .dropdown-item:hover {
+    background-color: #ede8f5 !important;
+    color: #483183 !important;
+}
+
+/* Toolbar: match content background so no stark white block under header */
+#kt_toolbar.toolbar {
+    background-color: #f9fafb !important;
+    border-bottom: 1px solid #eee;
+}
+
+/* Dashboard / module number cards - show text, prevent overflow by wrapping */
+#kt_content_container .row {
+    min-width: 0;
+    flex-wrap: wrap;
+}
+#kt_content_container .row .col-md-6,
+#kt_content_container .row .col-lg-4 {
+    min-width: 0;
+}
+#kt_content_container .card-flush {
+    min-width: 0;
+    max-width: 100%;
+}
+.card-flush .card-header {
+    min-width: 0;
+    max-width: 100%;
+}
+.card-flush .card-header .card-title,
+.card-flush .card-title.d-flex {
+    min-width: 0;
+    max-width: 100%;
+}
+/* Labels (Module Categories, Modules, Roles) - visible and wrap, no clip */
+.card-flush .card-title .text-gray-500,
+.card-flush .card-title .fw-semibold.fs-6 {
+    display: block;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+.card-flush .card-title .fs-2hx {
+    display: block;
+    max-width: 100%;
+}
+/* Dashboard stat cards: enough height so labels don't get cut off */
+#kt_content_container .dashboard-stat-card .card-header {
+    min-height: 5.5rem;
+    padding-bottom: 1.5rem !important;
+}

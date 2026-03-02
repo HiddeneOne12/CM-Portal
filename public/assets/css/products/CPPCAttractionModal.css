@@ -1,0 +1,20 @@
+.cp-pc-attraction-modal-main .modal-dialog {
+  min-width: 600px !important;
+}
+
+.cp-pc-attraction-modal-input-checkbox .radio-button .form-check-input {
+  margin-top: 1px !important;
+}
+.delete-itnarity-button {
+  top: 0px;
+  right: 0px;
+  color: red;
+  border: none;
+  background-color: transparent;
+}
+
+@media screen and (max-width: 600px) {
+  .cp-pc-attraction-modal-main .modal-dialog {
+    min-width: 97% !important;
+  }
+}

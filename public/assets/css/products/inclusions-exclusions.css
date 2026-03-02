@@ -1,0 +1,133 @@
+/* Base styles */
+:root {
+    --primary-color: #ff6b35;
+    --text-color: #2d3748;
+    --border-color: #e2e8f0;
+    --gray-light: #f8f9fa;
+    --gray-medium: #718096;
+    --remove-color: #e53e3e;
+}
+
+
+
+
+/* Container */
+.ie-container {
+    margin: 0 auto;
+    padding: 2rem 0px;
+}
+
+/* Typography */
+.ie-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin: 0 0 0.5rem 0;
+}
+
+.ie-section-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin: 0 0 1rem 0;
+}
+
+/* Section Styling */
+.ie-section {
+    margin-bottom: 2rem;
+}
+
+/* Items List */
+.ie-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Item Styling */
+.ie-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: white;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.ie-item-text {
+    font-size: 0.9375rem;
+    color: var(--text-color);
+}
+
+/* Remove Button */
+.ie-remove-btn {
+    background: none;
+    border: none;
+    color: var(--remove-color);
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.ie-remove-btn:hover {
+    opacity: 1;
+}
+
+/* Add Button */
+.ie-add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--gray-light);
+    border: none;
+    border-radius: 4px;
+    color: var(--primary-color);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    cursor: pointer;
+    gap: 0.5rem;
+    transition: background-color 0.2s ease;
+}
+
+.ie-add-btn:hover {
+    background-color: #f1f5f9;
+}
+
+.ie-add-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+/* Focus States */
+.ie-remove-btn:focus,
+.ie-add-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 640px) {
+    .ie-container {
+        padding: 1rem;
+    }
+
+    .ie-item {
+        padding: 0.625rem;
+    }
+
+    .ie-item-text {
+        font-size: 0.875rem;
+    }
+}

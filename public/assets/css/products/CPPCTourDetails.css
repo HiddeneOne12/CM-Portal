@@ -1,0 +1,168 @@
+.cp-pc-tour-trip-time-input {
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-radius: 0px !important;
+  outline: 0 !important;
+  width: 55px !important;
+  text-align: center !important;
+  border-right: 1px solid #ececec;
+}
+.cp-pc-tour-trip-time-input:focus {
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: 1px solid #ececec;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.cp-pc-tour-trip-time-input:active {
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: 1px solid #ececec;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.cp-pc-tour-trip-time-select .css-13cymwt-control {
+  border: none !important;
+  outline: 0 !important;
+  width: 110px !important;
+  box-shadow: none !important;
+  min-height: 35px !important;
+}
+
+.cp-pc-tour-trip-aprox-select .css-13cymwt-control {
+  width: 160px !important;
+}
+.cp-pc-tour-trip-aprox-select .css-t3ipsp-control {
+  width: 160px !important;
+}
+
+.cppc-tour-details-cut-off-time .css-13cymwt-control {
+  width: 100px !important;
+}
+.cppc-tour-details-cut-off-time .css-t3ipsp-control {
+  width: 100px !important;
+}
+.cp-pc-tour-trip-time-select .css-t3ipsp-control {
+  border: none !important;
+  outline: 0 !important;
+  width: 110px !important;
+  border-style: none !important;
+  box-shadow: none !important;
+  min-height: 35px !important;
+}
+.cp-pc-tour-trip-time-input-group {
+  border-radius: 4px;
+  border: 1px solid #ececec;
+}
+
+.cp-pc-tour-trip-time-input-line {
+  height: 42px;
+  width: 1px;
+  background-color: #ececec;
+}
+
+.cp-pc-aprox-btn {
+  border-radius: 50px;
+  border: 1px solid #ececec;
+  background: #f5f6f8;
+  padding: 4px 12px;
+  cursor: pointer;
+  user-select: none;
+}
+.cp-pc-aprox-btn p {
+  font-weight: 400 !important;
+  font-size: 16px !important;
+}
+
+.cp-pc-aprox-btn .circle-filled {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #d9d9d9;
+}
+.cp-pc-aprox-btn-active {
+  border: 1px solid #eb662b !important;
+}
+.cp-pc-aprox-btn-active .circle-filled {
+  background: #eb662b !important;
+}
+.cp-pc-td-form-question-section {
+  grid-template-columns: "1fr 1fr";
+}
+
+@media screen and (max-width: 768px) {
+  .cp-pc-td-form-question-section {
+    grid-template-columns: "0fr ";
+  }
+}
+
+
+
+.card {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ff6b35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+.selected-option {
+  background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  padding: 0;
+  margin-top: 2px;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  padding: 10px 15px;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.dropdown-item:hover {
+  background-color: #fff8f5;
+}
+
+.dropdown-item.selected {
+  background-color: #fff0e8;
+}
+
+.btn-close {
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+
+.btn-close:hover {
+  opacity: 1;
+}
+
+.form-check-input:checked {
+  background-color: #ff6b35;
+  border-color: #ff6b35;
+}
+
+

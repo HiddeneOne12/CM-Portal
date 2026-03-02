@@ -1,0 +1,47 @@
+.ob-tab-bar p:nth-child(2) {
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+}
+
+.cp-sidebar-icon {
+    padding: 3px;
+}
+
+.cp-sidebar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #f5f6f8;
+}
+
+.cp-sidebar-icon-active {
+    border: 1px solid #eb662b;
+}
+
+.add-product-sidebar-icon-span {
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid #e0e0e0;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.add-product-sidebar-icon-span i.active {
+    color: #eb662b;
+}
+
+.add-product-sidebar-icon-span.active {
+    border: 1px solid #eb662b;
+}
+
+.cp-sidebar a {
+    color: black;
+}
