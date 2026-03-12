@@ -5,11 +5,9 @@
 @push('toolbar_actions')
 @if (validatePermissions('admin/acl/module'))
 <div class="d-flex align-items-center gap-3 ms-auto">
-    @if(validatePermissions('admin/acl/module/add'))
     <a href="javascript:void(0)" class="btn btn-primary btn-sm btn-add border-anchor">
         <i class="ki-duotone ki-plus fs-2"></i>Add New Module
     </a>
-    @endif
     <div class="d-flex align-items-center position-relative">
         <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-5">
             <span class="path1"></span>
@@ -51,12 +49,8 @@
                     </div>
                 </div>
                 <div class="card-footer flex-wrap pt-0">
-                    @if(validatePermissions('admin/acl/module/edit'))
                     <a href="javascript:void(0)" role="button" data-id="{{ $row->getKey() }}" data-token="{{ encryptIdForUrl($row->getKey()) }}" class="btn btn-light btn-active-light-primary btn-edit my-1">Edit Module</a>
-                    @endif
-                    @if(validatePermissions('admin/acl/module/delete'))
                     <a href="javascript:void(0)" data-id="{{ encryptIdForUrl($row->getKey()) }}" class="btn btn-light btn-active-light-primary my-1 btn-delete" data-id="{{ $row->getKey() }}" data-confirm-delete="Delete this module?">Delete Module</a>
-                    @endif
                 </div>
             </div>
         </div>

@@ -15,10 +15,7 @@ Edit Role - {{ config('global.SITE_NAME') }}
             <div class="col-12">
                 <div class="card card-flush shadow-sm">
                     <div class="card-header pt-6 pb-4 border-bottom">
-                        <div class="card-title d-flex align-items-center gap-3">
-                            <span class="bg-warning bg-opacity-10 rounded p-2">
-                                <i class="ki-duotone ki-pencil fs-2 text-warning"><span class="path1"></span><span class="path2"></span></i>
-                            </span>
+                        <div class="card-title d-flex align-items-center gap-3">            
                             <div>
                                 <h3 class="card-label fw-bold text-gray-900 mb-0">Edit Role</h3>
                                 <span class="text-muted fs-7">Editing: <strong>{{ $role->role_name }}</strong></span>
@@ -26,7 +23,6 @@ Edit Role - {{ config('global.SITE_NAME') }}
                         </div>
                     </div>
                     <div class="card-body pt-6">
-
                         @if ($errors->any())
                             <div class="alert alert-danger d-flex align-items-start mb-6">
                                 <i class="ki-duotone ki-information-5 fs-2 me-3 mt-1 text-danger"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
@@ -52,23 +48,15 @@ Edit Role - {{ config('global.SITE_NAME') }}
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="col-12 col-md-3">
-                                    <label class="form-label fw-semibold text-gray-700">Display Order</label>
-                                    <input type="number" name="display_order"
-                                           class="form-control form-control-solid"
-                                           value="{{ old('display_order', $role->display_order) }}"
-                                           min="0">
-                                </div>
                             </div>
 
-                            {{-- Permissions grouped by category --}}
-                            <div class="mb-8">
-                                @php
-                                    $selectedModules = array_map('intval', old('modules', $permissions ?? []));
-                                    $grouped = $modules->groupBy(fn($m) => optional($m->category)->category_name ?? 'Uncategorized');
-                                    $isSuperAdmin = $role->getKey() == 1;
-                                @endphp
+                            @php
+                                $selectedModules = array_map('intval', old('modules', $permissions ?? []));
+                                $grouped = $modules->groupBy(fn($m) => optional($m->category)->category_name ?? 'Uncategorized');
+                                $isSuperAdmin = $role->getKey() == 1;
+                            @endphp
 
+                            <div class="mb-8">
                                 <div class="d-flex align-items-center justify-content-between mb-3">
                                     <label class="form-label fw-semibold text-gray-700 mb-0">
                                         Permissions
@@ -104,25 +92,24 @@ Edit Role - {{ config('global.SITE_NAME') }}
                                                         $catIds = $categoryModules->pluck('ID')->map(fn($v) => (int)$v)->toArray();
                                                         $allChecked = count(array_intersect($catIds, $selectedModules)) === count($catIds);
                                                     @endphp
-                                                    <input class="form-check-input category-toggle"
-                                                           type="checkbox"
-                                                           data-category="{{ Str::slug($categoryName) }}"
-                                                           id="cat_{{ Str::slug($categoryName) }}"
+                                                    <input class="form-check-input category-toggle" type="checkbox"
+                                                           data-category="{{ \Illuminate\Support\Str::slug($categoryName) }}"
+                                                           id="cat_{{ \Illuminate\Support\Str::slug($categoryName) }}"
                                                            {{ $allChecked ? 'checked' : '' }}>
-                                                    <label class="form-check-label text-muted fs-8" for="cat_{{ Str::slug($categoryName) }}">All</label>
+                                                    <label class="form-check-label text-muted fs-8" for="cat_{{ \Illuminate\Support\Str::slug($categoryName) }}">All</label>
                                                 </div>
                                                 @endif
                                             </div>
                                             @foreach($categoryModules as $module)
                                             <div class="form-check form-check-custom form-check-solid mb-2">
-                                                <input class="form-check-input module-check cat-{{ Str::slug($categoryName) }}"
+                                                <input class="form-check-input module-check cat-{{ \Illuminate\Support\Str::slug($categoryName) }}"
                                                        type="checkbox"
                                                        name="modules[]"
-                                                       value="{{ $module->ID }}"
-                                                       id="mod_{{ $module->ID }}"
-                                                       {{ in_array((int)$module->ID, $selectedModules) ? 'checked' : '' }}
-                                                       {{ $isSuperAdmin ? 'disabled checked' : '' }}>
-                                                <label class="form-check-label text-gray-700 fw-semibold fs-7" for="mod_{{ $module->ID }}">
+                                                       value="{{ $module->getKey() }}"
+                                                       id="mod_{{ $module->getKey() }}"
+                                                       {{ in_array((int)$module->getKey(), $selectedModules) ? 'checked' : '' }}
+                                                       {{ $isSuperAdmin ? 'disabled' : '' }}>
+                                                <label class="form-check-label text-gray-700 fw-semibold fs-7" for="mod_{{ $module->getKey() }}">
                                                     {{ $module->module_name }}
                                                 </label>
                                             </div>
@@ -135,12 +122,11 @@ Edit Role - {{ config('global.SITE_NAME') }}
                             </div>
 
                             <div class="d-flex gap-3">
-                                <button type="submit" class="btn btn-primary px-8" {{ $isSuperAdmin ? '' : '' }}>
+                                <button type="submit" class="btn btn-primary px-8">
                                     <i class="ki-duotone ki-check fs-4 me-1"></i> Update Role
                                 </button>
                                 <a href="{{ route('admin.acl.roles.listing') }}" class="btn btn-light">Cancel</a>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -148,38 +134,36 @@ Edit Role - {{ config('global.SITE_NAME') }}
         </div>
     </div>
 </div>
+@stop
 
 @push('scripts')
 <script>
-    document.querySelectorAll('.category-toggle').forEach(function(toggle) {
-        toggle.addEventListener('change', function() {
-            const cat = this.dataset.category;
-            document.querySelectorAll('.cat-' + cat).forEach(cb => cb.checked = toggle.checked);
+document.querySelectorAll('.category-toggle').forEach(function(toggle) {
+    toggle.addEventListener('change', function() {
+        const cat = this.dataset.category;
+        document.querySelectorAll('.cat-' + cat).forEach(function(cb) { cb.checked = toggle.checked; });
+    });
+});
+document.querySelectorAll('.module-check').forEach(function(cb) {
+    cb.addEventListener('change', function() {
+        this.classList.forEach(function(cls) {
+            if (cls.startsWith('cat-')) {
+                const cat = cls.replace('cat-', '');
+                const all = document.querySelectorAll('.cat-' + cat);
+                const checked = document.querySelectorAll('.cat-' + cat + ':checked');
+                const toggle = document.querySelector('[data-category="' + cat + '"]');
+                if (toggle) toggle.checked = all.length === checked.length;
+            }
         });
     });
-
-    document.querySelectorAll('.module-check').forEach(function(cb) {
-        cb.addEventListener('change', function() {
-            this.classList.forEach(function(cls) {
-                if (cls.startsWith('cat-')) {
-                    const cat = cls.replace('cat-', '');
-                    const all = document.querySelectorAll('.cat-' + cat);
-                    const checked = document.querySelectorAll('.cat-' + cat + ':checked');
-                    const toggle = document.querySelector('[data-category="' + cat + '"]');
-                    if (toggle) toggle.checked = all.length === checked.length;
-                }
-            });
-        });
-    });
-
-    const selectAll = document.getElementById('selectAll');
-    const deselectAll = document.getElementById('deselectAll');
-    if (selectAll) selectAll.addEventListener('click', () => {
-        document.querySelectorAll('.module-check, .category-toggle').forEach(cb => cb.checked = true);
-    });
-    if (deselectAll) deselectAll.addEventListener('click', () => {
-        document.querySelectorAll('.module-check, .category-toggle').forEach(cb => cb.checked = false);
-    });
+});
+var selectAll = document.getElementById('selectAll');
+var deselectAll = document.getElementById('deselectAll');
+if (selectAll) selectAll.addEventListener('click', function() {
+    document.querySelectorAll('.module-check, .category-toggle').forEach(function(cb) { cb.checked = true; });
+});
+if (deselectAll) deselectAll.addEventListener('click', function() {
+    document.querySelectorAll('.module-check, .category-toggle').forEach(function(cb) { cb.checked = false; });
+});
 </script>
 @endpush
-@stop

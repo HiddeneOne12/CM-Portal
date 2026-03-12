@@ -114,22 +114,54 @@ class AdminDashboardController extends Controller
             ->havingRaw('count(*) = 1')
             ->pluck('session_id');
 
+        // Aggregate metrics per path first
         $pages = (clone $base)
-            ->selectRaw('path, count(*) as views, avg(time_spent_seconds) as avg_seconds, max(visited_at) as last_visited')
+            ->selectRaw('path, count(*) as views, avg(time_spent_seconds) as avg_seconds, max(visited_at) as last_visited_at')
             ->groupBy('path')
-            ->orderByDesc('last_visited')
-            ->limit(5)
+            ->orderByDesc('last_visited_at') // latest activity first
+            ->limit(5)                       // only latest 5 pages
             ->get();
 
         $result = [];
         foreach ($pages as $row) {
-            $bounceCount = (clone $base)->where('path', $row->path)->whereIn('session_id', $singlePageSessions)->count();
-            $bounceRate = $row->views > 0 ? round($bounceCount / $row->views * 100, 1) : 0;
+            $path = $row->path;
+            $title = null;
+
+            // Map detail pages to their model titles when possible
+            if (str_starts_with($path, '/members-portal/interviews/')) {
+                $token = trim(str_replace('/members-portal/interviews', '', $path), '/');
+                $id = $token ? decryptIdFromUrl($token) : null;
+                if ($id) {
+                    $interview = Interview::find($id);
+                    if ($interview && $interview->title) {
+                        $title = $interview->title;
+                    }
+                }
+            } elseif (str_starts_with($path, '/members-portal/training/')) {
+                $token = trim(str_replace('/members-portal/training', '', $path), '/');
+                $id = $token ? decryptIdFromUrl($token) : null;
+                if ($id) {
+                    $training = Training::find($id);
+                    if ($training && $training->title) {
+                        $title = $training->title;
+                    }
+                }
+            } elseif (str_starts_with($path, '/members-portal/event-materials/')) {
+                $token = trim(str_replace('/members-portal/event-materials', '', $path), '/');
+                $id = $token ? decryptIdFromUrl($token) : null;
+                if ($id) {
+                    $event = Event::find($id);
+                    if ($event && $event->title) {
+                        $title = $event->title;
+                    }
+                }
+            }
+
             $result[] = [
-                'path' => $row->path,
-                'views' => (int) $row->views,
-                'bounce_rate' => $bounceRate,
+                'path'        => $path,
+                'views'       => (int) $row->views,
                 'avg_seconds' => $row->avg_seconds ? (int) round($row->avg_seconds) : 0,
+                'title'       => $title,
             ];
         }
 

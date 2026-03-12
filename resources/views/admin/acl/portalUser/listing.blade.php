@@ -20,7 +20,7 @@
                     <input type="text" name="search" value="{{ request('search') }}" id="portal-user-search-input" class="form-control form-control-solid w-250px ps-13" placeholder="Search User (real-time)" autocomplete="off" />
                 </div>
                 <div class="card-toolbar">
-                    @if(validatePermissions('admin/acl/portal-users/add'))
+                    @if (validatePermissions('admin/acl/portal-users'))
                     <a href="javascript:void(0)" class="btn btn-sm btn-primary btn-add"><i class="ki-duotone ki-plus fs-2"></i>Add User</a>
                     @endif
                 </div>
@@ -55,7 +55,7 @@
                                 <td>{{ $row->first_name }}</td>
                                 <td>{{ $row->last_name }}</td>
                                 <td>
-                                    @if(validatePermissions('admin/acl/portal-users/edit'))
+                                    @if (validatePermissions('admin/acl/portal-users'))
                                     <a href="javascript:void(0)" class="status-toggle text-decoration-none" data-id="{{ $row->id }}" data-url="{{ route('admin.acl.portal-users.toggle-status', encryptIdForUrl($row->id)) }}" data-status="{{ (int) $row->status }}" title="Click to toggle">
                                         @if((int) $row->status === 1)
                                         <span class="badge badge-light-success">Enabled</span>
@@ -77,10 +77,8 @@
                                 <td>{{ $row->created_at ? \Carbon\Carbon::parse($row->created_at)->format('M d, Y H:i') : '—' }}</td>
                                 <td>{{ $row->updated_at ? \Carbon\Carbon::parse($row->updated_at)->format('M d, Y H:i') : '—' }}</td>
                                 <td class="text-end">
-                                    @if(validatePermissions('admin/acl/portal-users/edit'))
+                                    @if (validatePermissions('admin/acl/portal-users'))
                                     <a href="javascript:void(0)" role="button" data-id="{{ $row->id }}" data-token="{{ encryptIdForUrl($row->id) }}" class="btn btn-light btn-sm btn-edit-form me-1">Edit</a>
-                                    @endif
-                                    @if(validatePermissions('admin/acl/portal-users/delete'))
                                     <a href="javascript:void(0)" data-id="{{ encryptIdForUrl($row->getKey()) }}" class="btn btn-sm btn-danger btn-delete" data-confirm-delete="Delete this user?">Delete</a>
                                     @endif
                                 </td>

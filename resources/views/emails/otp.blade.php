@@ -31,7 +31,7 @@
     <tr>
         <td align="center" style="padding:10px 40px;">
             <h2 style="margin:0; font-size:22px; color:#2b2b2b;">
-                Cyber Majlis – One-time Code
+                Cyber Majlis One-time Code
             </h2>
         </td>
     </tr>

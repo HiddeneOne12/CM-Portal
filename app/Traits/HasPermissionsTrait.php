@@ -36,8 +36,10 @@ trait HasPermissionsTrait
         } elseif (!str_starts_with($path, 'admin/')) {
             $path = 'admin/' . $path;
         }
+
         $adminRoles = AdminUserRoleModel::where('admin_ID', $adminUser->id)->get();
         foreach ($adminRoles as $rowAdminRole) {
+            // For middleware/path checks, allow URLs like admin/acl/admin-users/edit/TOKEN
             $result = RolePrivilegeModel::hasPermissionForPath($rowAdminRole->role_ID, $path);
             if ($result) {
                 return $result;

@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+    @extends('layouts.admin')
 @push('title')
 {{ $pageTitle }} - {{ config('global.SITE_NAME') }}
 @endpush
@@ -19,12 +19,12 @@
     $visitorsPerMonth = $visitorsPerMonth ?? ['labels' => [], 'data' => []];
     $popularPages = $popularPages ?? [];
     $statCards = [
-        ['key' => 'companies',  'label' => 'Companies',    'icon' => '🏢', 'url' => route('admin.acl.companies.listing')],
-        ['key' => 'interviews', 'label' => 'Interviews',   'icon' => '🎙️', 'url' => route('admin.acl.interviews.listing')],
-        ['key' => 'events',     'label' => 'Events',       'icon' => '📅', 'url' => route('admin.acl.events.listing')],
-        ['key' => 'documents',  'label' => 'Documents',    'icon' => '📄', 'url' => route('admin.acl.documentation.listing')],
-        ['key' => 'training',   'label' => 'Training',     'icon' => '📚', 'url' => route('admin.acl.training.listing')],
-        ['key' => 'reports',    'label' => 'Reports',      'icon' => '📊', 'url' => route('admin.acl.reports.listing')],
+        ['key' => 'companies',  'label' => 'Companies',  'icon' => '🏢', 'url' => route('admin.acl.companies.listing')],
+        ['key' => 'interviews', 'label' => 'Interviews', 'icon' => '🎙️', 'url' => route('admin.acl.interviews.listing')],
+        ['key' => 'events',     'label' => 'Events',     'icon' => '📅', 'url' => route('admin.acl.events.listing')],
+        ['key' => 'documents',  'label' => 'Documents',  'icon' => '📄', 'url' => route('admin.acl.documentation.listing')],
+        ['key' => 'training',   'label' => 'Training',   'icon' => '📚', 'url' => route('admin.acl.training.listing')],
+        ['key' => 'reports',    'label' => 'Reports',    'icon' => '📊', 'url' => route('admin.acl.reports.listing')],
     ];
     $total = array_sum(array_map(fn($c) => $stats[$c['key']] ?? 0, $statCards));
     $formatDuration = function ($sec) {
@@ -34,7 +34,7 @@
         $s = $sec % 60;
         return $m . ':' . str_pad((string)$s, 2, '0', STR_PAD_LEFT) . ' min';
     };
-
+    // Visitor analytics periods (for VA card)
     $v7   = $visitorStats['visitors_7']   ?? 0; $p7   = $visitorStats['visitors_prev_7']   ?? 0;
     $v30  = $visitorStats['visitors_30']  ?? 0; $p30  = $visitorStats['visitors_prev_30']  ?? 0;
     $v90  = $visitorStats['visitors_90']  ?? 0; $p90  = $visitorStats['visitors_prev_90']  ?? 0;
@@ -51,6 +51,7 @@
 @endphp
 
 <div class="analytics-wrap">
+
 
     {{-- Stat Cards --}}
     <div class="row g-4 mb-4">
@@ -75,7 +76,7 @@
         @endforeach
     </div>
 
-    {{-- ── Visitor Analytics Card ───────────────────────────────── --}}
+    {{-- ── Visitor Analytics Card (tabs + sparkline) ───────────────────────── --}}
     <div class="row g-4 mb-4">
         <div class="col-12">
             <div class="va-card">
@@ -107,9 +108,6 @@
                     $hasPrev = $period['prev'] > 0;
                     $avgSec  = (int) $period['avg'];
                     $avgFmt  = $avgSec < 60 ? $avgSec . 's' : floor($avgSec/60) . ':' . str_pad($avgSec%60,2,'0',STR_PAD_LEFT) . ' min';
-                    $maxVal  = max($period['visitors'], $period['prev'], 1);
-                    $curPct  = round($period['visitors'] / $maxVal * 100);
-                    $prevPct = $hasPrev ? round($period['prev'] / $maxVal * 100) : 0;
                 @endphp
                 <div class="va-panel {{ $key === $vaDefaultPeriod ? 'active' : '' }}" data-period="{{ $key }}" @if($key !== $vaDefaultPeriod) hidden @endif>
                     <div class="va-metrics">
@@ -166,7 +164,7 @@
 
                         <div class="va-divider"></div>
 
-                        {{-- Sparkline Chart (replaces flat bars) --}}
+                        {{-- Sparkline Chart --}}
                         <div class="va-sparkline-section">
                             <div class="va-sparkline-labels">
                                 <span class="va-sparkline-badge va-badge-current">Current: {{ number_format($period['visitors']) }}</span>
@@ -189,10 +187,10 @@
         </div>
     </div>
 
-    {{-- Visitors per month --}}
+    {{-- Visitors per month + Most popular pages (frontend portal) --}}
     <div class="row g-4 mb-4">
-        <div class="col-12">
-            <div class="section-card">
+        <div class="col-12 col-lg-7 d-flex">
+            <div class="section-card w-100">
                 <div class="section-title">Visitors per month</div>
                 <div class="section-sub">Unique visitors by month (frontend portal, last 12 months).</div>
                 <div class="section-card-chart" style="min-height: 280px;">
@@ -200,36 +198,60 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    {{-- Most popular pages --}}
-    <div class="row g-4 mb-4">
-        <div class="col-12">
-            <div class="section-card">
+        <div class="col-12 col-lg-5 d-flex">
+            <div class="section-card w-100">
                 <div class="section-title">Most popular pages</div>
-                <div class="section-sub">Frontend portal pages by views, bounce rate and avg. time (last 90 days).</div>
+                <div class="section-sub">Frontend portal pages by views and avg. time (last 90 days).</div>
                 <div class="table-responsive">
                     <table class="analytics-table">
                         <thead>
                             <tr>
                                 <th>Page</th>
                                 <th style="text-align:right;">Views</th>
-                                <th style="text-align:right;">Bounces</th>
                                 <th style="text-align:right;">Avg. time</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($popularPages as $page)
+                            @php
+                                // Prefer explicit title from controller (interview/training/event detail)
+                                if (!empty($page['title'])) {
+                                    $label = $page['title'];
+                                } else {
+                                    $path = $page['path'] ?? '/';
+                                    if ($path === '/') {
+                                        $label = 'Home';
+                                    } elseif (str_starts_with($path, '/members-portal/interviews')) {
+                                        $label = 'Interviews';
+                                    } elseif (str_starts_with($path, '/members-portal/training')) {
+                                        $label = 'Training';
+                                    } elseif (str_starts_with($path, '/members-portal/event-materials')) {
+                                        $label = 'Event Materials';
+                                    } elseif (str_starts_with($path, '/members-portal/reports')) {
+                                        $label = 'Reports';
+                                    } elseif (str_starts_with($path, '/members-portal/agenda')) {
+                                        $label = 'Agenda';
+                                    } elseif (str_starts_with($path, '/members-portal/documentation')) {
+                                        $label = 'Documentation';
+                                    } elseif (str_starts_with($path, '/members-portal')) {
+                                        $label = 'Members Portal';
+                                    } else {
+                                        $segment = explode('/', trim($path, '/'))[0] ?? '';
+                                        $segment = $segment === '' ? 'Home' : $segment;
+                                        $segment = str_replace(['-', '_'], ' ', $segment);
+                                        $label = ucfirst($segment);
+                                    }
+                                }
+                            @endphp
                             <tr>
                                 <td>
-                                    <span class="fw-semibold">{{ $page['path'] === '/' ? 'Home' : str_replace('/', ' / ', trim($page['path'], '/')) }}</span>
+                                    <span class="d-block fw-semibold text-capitalize">{{ $label }}</span>
                                 </td>
                                 <td style="text-align:right; font-weight:600;">{{ number_format($page['views']) }}</td>
-                                <td style="text-align:right;"><span class="table-pill pill-purple">{{ $page['bounce_rate'] }}%</span></td>
                                 <td style="text-align:right;">{{ $formatDuration($page['avg_seconds']) }}</td>
                             </tr>
                             @empty
-                            <tr><td colspan="4" class="text-muted">No page data yet.</td></tr>
+                            <tr><td colspan="3" class="text-muted">No page data yet. Visits with path are recorded from frontend and portal.</td></tr>
                             @endforelse
                         </tbody>
                     </table>
@@ -238,8 +260,9 @@
         </div>
     </div>
 
-    {{-- Overview + Categories --}}
     <div class="row g-4 dashboard-cards-row align-items-stretch">
+
+        {{-- Bar Chart --}}
         <div class="col-12 col-lg-7 d-flex">
             <div class="section-card section-card-overview">
                 <div class="section-title">Overview</div>
@@ -247,39 +270,40 @@
                 <div class="section-card-chart" id="dashboardStatsChart"></div>
             </div>
         </div>
+
+        {{-- Table --}}
         <div class="col-12 col-lg-5 d-flex">
             <div class="section-card section-card-categories">
                 <div class="section-title">All Categories</div>
                 <div class="section-sub">Breakdown with share of total</div>
                 <div class="section-card-table-wrap">
-                    <table class="analytics-table">
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th style="text-align:right;">Count</th>
-                                <th style="text-align:right;">Share</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($statCards as $card)
-                            @php $count = $stats[$card['key']] ?? 0; $pct = $total > 0 ? round($count / $total * 100, 1) : 0; @endphp
-                            <tr>
-                                <td>
-                                    @if($card['url'])
-                                        <a href="{{ $card['url'] }}">{{ $card['label'] }}</a>
-                                    @else
-                                        {{ $card['label'] }}
-                                    @endif
-                                </td>
-                                <td style="text-align:right; font-weight:600;">{{ number_format($count) }}</td>
-                                <td style="text-align:right;"><span class="table-pill pill-purple">{{ $pct }}%</span></td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <table class="analytics-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th style="text-align:right;">Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($statCards as $card)
+                        @php $count = $stats[$card['key']] ?? 0; $pct = $total > 0 ? round($count / $total * 100, 1) : 0; @endphp
+                        <tr>
+                            <td>
+                                @if($card['url'])
+                                    <a href="{{ $card['url'] }}">{{ $card['label'] }}</a>
+                                @else
+                                    {{ $card['label'] }}
+                                @endif
+                            </td>
+                            <td style="text-align:right; font-weight:600;">{{ number_format($count) }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
                 </div>
             </div>
         </div>
+
     </div>
 
 </div>
@@ -289,144 +313,6 @@
 @include('includes.admin_footer')
 @stop
 
-@push('css')
-<style>
-/* ── Visitor Analytics Card ─────────────────────────────────── */
-.va-card {
-    background: #fff;
-    border: 1px solid #e9ecef;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 1px 4px rgba(0,0,0,.06);
-}
-.va-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 20px 24px 16px;
-    border-bottom: 1px solid #f1f3f5;
-    background: linear-gradient(135deg, #fafafa 0%, #f5f3ff 100%);
-}
-.va-header-left { display: flex; align-items: center; gap: 12px; }
-.va-icon-wrap {
-    width: 40px; height: 40px;
-    background: #483183;
-    border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    color: #fff; flex-shrink: 0;
-}
-.va-title    { font-weight: 700; font-size: 15px; color: #1a1a2e; }
-.va-subtitle { font-size: 12px; color: #8b8fa8; margin-top: 1px; }
-
-.va-tabs {
-    display: flex;
-    background: #f1f0f8;
-    border-radius: 10px;
-    padding: 3px;
-    gap: 2px;
-}
-.va-tab {
-    border: none; background: transparent;
-    padding: 6px 14px; border-radius: 7px;
-    font-size: 12px; font-weight: 600; color: #7c6db0;
-    cursor: pointer; transition: all 0.18s ease; white-space: nowrap;
-}
-.va-tab:hover  { background: #e5e0f5; color: #483183; }
-.va-tab.active { background: #fff; color: #483183; box-shadow: 0 1px 4px rgba(72,49,131,.15); }
-
-.va-panel { padding: 24px; }
-.va-metrics {
-    display: flex;
-    align-items: stretch;
-    flex-wrap: wrap;
-    gap: 0;
-}
-.va-divider {
-    width: 1px; background: #f1f3f5;
-    margin: 0 28px; align-self: stretch; flex-shrink: 0;
-}
-.va-metric-primary { min-width: 140px; }
-.va-metric-value {
-    font-size: 48px; font-weight: 800;
-    color: #1a1a2e; line-height: 1; letter-spacing: -2px;
-}
-.va-metric-label {
-    font-size: 13px; font-weight: 600; color: #6b7280;
-    margin-top: 6px; text-transform: uppercase; letter-spacing: .5px;
-}
-.va-metric-period {
-    display: inline-block; margin-top: 6px;
-    background: #f0ecff; color: #483183;
-    font-size: 11px; font-weight: 700;
-    padding: 2px 9px; border-radius: 20px;
-}
-.va-metric-secondary {
-    display: flex; flex-direction: column;
-    justify-content: center; gap: 16px; min-width: 180px;
-}
-.va-secondary-item { display: flex; align-items: center; gap: 10px; }
-.va-secondary-icon {
-    width: 30px; height: 30px; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.va-icon-time { background: #e0f2fe; color: #0369a1; }
-.va-icon-up   { background: #dcfce7; color: #16a34a; }
-.va-icon-down { background: #fee2e2; color: #dc2626; }
-.va-icon-prev { background: #f3f4f6; color: #6b7280; }
-.va-secondary-value { font-size: 14px; font-weight: 700; color: #1a1a2e; }
-.va-secondary-label { font-size: 11px; color: #9ca3af; margin-top: 1px; }
-.va-text-up   { color: #16a34a; }
-.va-text-down { color: #dc2626; }
-
-/* ── Sparkline Section ──────────────────────────────────────── */
-.va-sparkline-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
-    min-width: 220px;
-    gap: 10px;
-}
-.va-sparkline-labels {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-.va-sparkline-badge {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 20px;
-    letter-spacing: .3px;
-}
-.va-badge-current {
-    background: linear-gradient(90deg, #483183, #7c5cbf);
-    color: #fff;
-}
-.va-badge-prev {
-    background: #f3f4f6;
-    color: #6b7280;
-    border: 1px solid #e5e7eb;
-}
-.va-sparkline {
-    width: 100% !important;
-    height: 72px !important;
-    border-radius: 10px;
-    display: block;
-}
-
-@media (max-width: 768px) {
-    .va-metrics  { flex-direction: column; gap: 20px; }
-    .va-divider  { width: 100%; height: 1px; margin: 4px 0; }
-    .va-metric-value { font-size: 36px; }
-    .va-header   { flex-direction: column; align-items: flex-start; }
-    .va-sparkline-section { min-width: 100%; }
-}
-</style>
-@endpush
-
 @section('script')
 <script src="{{ asset('assets/js/custom/c3-bundle.min.js') }}"></script>
 @include('includes.admin_scripts')
@@ -434,7 +320,6 @@
 <script>window.dashboardVisitorsPerMonth = @json($visitorsPerMonth);</script>
 <script src="{{ asset('assets/js/dashboard-charts.js') }}?v={{ time() }}"></script>
 <script>
-// ── Visitor analytics tab switching ─────────────────────────
 (function(){
     var tabs   = document.querySelectorAll('.va-tab');
     var panels = document.querySelectorAll('.va-panel');
@@ -590,7 +475,6 @@ function drawSparklines(container) {
 window.addEventListener('load', function() { drawSparklines(); });
 window.addEventListener('resize', function() { drawSparklines(); });
 
-// ── Visitors per month chart ─────────────────────────────────
 (function(){
     var data = window.dashboardVisitorsPerMonth;
     if (typeof c3 !== 'undefined' && data && data.labels && data.labels.length && document.getElementById('visitorsPerMonthChart')) {
