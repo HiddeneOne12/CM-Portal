@@ -1,4 +1,4 @@
-<form method="post" action="{{ url('/admin/acl/module/add') }}">
+<form method="post" action="{{ url('/cmcontrol/acl/module/add') }}">
     @csrf
     <input type="hidden" name="eid" value="">
     <input type="hidden" name="show_in_menu" id="show_in_menu" value="0">

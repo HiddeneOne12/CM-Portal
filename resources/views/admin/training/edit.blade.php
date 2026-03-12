@@ -1,4 +1,4 @@
-<form method="post" action="{{ url('/admin/acl/training/edit/' . $row->id) }}" enctype="multipart/form-data">
+<form method="post" action="{{ url('/cmcontrol/acl/training/edit/' . $row->id) }}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="eid" value="{{ $row->id }}">
     <input type="hidden" name="training_token" value="{{ encryptIdForUrl($row->id) }}">

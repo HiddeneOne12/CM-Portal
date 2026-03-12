@@ -16,10 +16,10 @@ return [
     */
 
     'admin' => [
-        'path_prefix' => 'admin',
-        'login_path' => 'admin/login',
-        'dashboard_path' => 'admin/dashboard',
-        'logout_path' => 'admin/logout',
+        'path_prefix' => 'cmcontrol',
+        'login_path' => 'cmcontrol/login',
+        'dashboard_path' => 'cmcontrol/dashboard',
+        'logout_path' => 'cmcontrol/logout',
     ],
 
 ];

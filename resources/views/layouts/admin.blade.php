@@ -35,7 +35,7 @@
     <script src="{{ asset('assets/js/vendor/sweetalert2.all.min.js') }}"></script>
     @stack('css')
     <script>
-        var admin_url = '{{ url("/admin") }}';
+        var admin_url = '{{ url("cmcontrol") }}';
         var defaultThemeMode = "light";
         var themeMode = localStorage.getItem("data-bs-theme") || document.documentElement.getAttribute("data-bs-theme-mode") || defaultThemeMode;
         if (themeMode === "system") {
@@ -57,6 +57,8 @@
         </div>
     </div>
     <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script>window.visitorAnalyticsSource = 'admin'; window.visitorAnalyticsBaseUrl = '{{ url('') }}';</script>
+    <script src="{{ asset('assets/js/visitor-analytics.js') }}"></script>
     <script>
     window.showAdminAlert = function(type, msg) {
         var t = msg || (type === 'success' ? 'Done.' : 'Something went wrong.');

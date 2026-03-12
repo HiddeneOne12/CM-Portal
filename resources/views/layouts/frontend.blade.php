@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="description" content="Exploring the Future of Technology and Innovations - Initiative of ICD">
   <title>@yield('title', 'Cyber Majlis')</title>
   <link rel="shortcut icon" href="{{ asset('frontend/assets/images/logo-fa.svg') }}" type="image/x-icon">
@@ -60,6 +61,8 @@
   <script src="{{ asset('frontend/assets/dropdown/js/navbar-dropdown.js') }}"></script>
   <script src="{{ asset('frontend/assets/scrollgallery/scroll-gallery.js') }}"></script>
   <script src="{{ asset('frontend/assets/theme/js/script.js') }}"></script>
+  <script>window.visitorAnalyticsSource = 'frontend'; window.visitorAnalyticsBaseUrl = '{{ url('') }}';</script>
+  <script src="{{ asset('assets/js/visitor-analytics.js') }}"></script>
   <script>
     (function() {
       function triggerAnimationScroll() {

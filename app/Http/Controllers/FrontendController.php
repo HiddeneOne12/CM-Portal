@@ -102,8 +102,8 @@ class FrontendController extends Controller
         $request->session()->forget(['otp_code', 'otp_expires_at']);
         $request->session()->regenerate();
         $request->session()->put('portal_authenticated', true);
-        $request->session()->put('portal_ip', $request->ip());
-        $request->session()->put('portal_user_agent', substr($request->userAgent(), 0, 255));
+        // $request->session()->put('portal_ip', $request->ip());
+        // $request->session()->put('portal_user_agent', substr($request->userAgent(), 0, 255));
     
         return redirect()->route('portal')
             ->with('success', 'Welcome to the Members\' Portal.');

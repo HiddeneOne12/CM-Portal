@@ -1,4 +1,4 @@
-<form method="post" action="{{ url('/admin/acl/module/edit/' . $row->getKey()) }}">
+<form method="post" action="{{ url('/cmcontrol/acl/module/edit/' . $row->getKey()) }}">
     @csrf
     <input type="hidden" name="eid" value="{{ $row->getKey() }}">
     <input type="hidden" name="module_token" value="{{ encryptIdForUrl($row->getKey()) }}">

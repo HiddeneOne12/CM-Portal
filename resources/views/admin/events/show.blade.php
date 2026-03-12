@@ -193,7 +193,7 @@ var eventViewParticipants = @json($participants ?? []);
 </script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var baseUrl = typeof admin_url !== 'undefined' ? admin_url : (window.location.origin + '/admin');
+    var baseUrl = typeof admin_url !== 'undefined' ? admin_url : (window.location.origin + '/cmcontrol');
     var ajaxHeaders = { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' };
     var ajaxOpts = { headers: ajaxHeaders, xhrFields: { withCredentials: true } };
     var drawerEl = document.getElementById('kt_activities');

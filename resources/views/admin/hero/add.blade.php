@@ -1,4 +1,4 @@
-<form method="post" action="{{ url('/admin/acl/hero/add') }}" enctype="multipart/form-data">
+<form method="post" action="{{ url('/cmcontrol/acl/hero/add') }}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="eid" value="">
     <div class="fv-row mb-5">

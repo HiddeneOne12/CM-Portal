@@ -22,6 +22,6 @@ class AdminUserRoleModel extends Model
 
     public function role()
     {
-        return $this->belongsTo(RoleModel::class, 'role_ID', 'id');
+        return $this->belongsTo(RoleModel::class, 'role_ID', 'ID'); // ← 'ID' not 'id'
     }
 }

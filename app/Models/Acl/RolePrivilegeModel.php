@@ -23,19 +23,28 @@ class RolePrivilegeModel extends Model
         return $this->hasOne(ModuleModel::class, 'id', 'module_ID');
     }
 
+    /**
+     * Check if role has permission for the exact route/slug (for buttons and controller checks).
+     * No prefix fallback: add/edit/delete require explicit module privileges.
+     */
     public static function hasPermission(int $roleId, string $currentUri): mixed
     {
-        $exact = self::query()
+        return self::query()
             ->join('tbl_roles', 'tbl_role_privileges.role_ID', '=', 'tbl_roles.id')
             ->join('tbl_modules', 'tbl_role_privileges.module_ID', '=', 'tbl_modules.id')
             ->where('tbl_role_privileges.role_ID', (int) $roleId)
             ->where('tbl_modules.route', $currentUri)
             ->select('tbl_role_privileges.*')
             ->first();
-        if ($exact) {
-            return $exact;
-        }
-        // Allow add/edit/search etc. when user has permission for the module base route (e.g. admin/acl/module-categories/add allowed when user has admin/acl/module-categories)
+    }
+
+    /**
+     * Check if role has permission for a request path (e.g. admin/acl/admin-users/edit/TOKEN).
+     * Path is allowed if it equals a module route or starts with module_route + '/'.
+     * Used by middleware so edit/123 matches module route "admin/acl/admin-users/edit".
+     */
+    public static function hasPermissionForPath(int $roleId, string $path): mixed
+    {
         $privileges = self::query()
             ->join('tbl_modules', 'tbl_role_privileges.module_ID', '=', 'tbl_modules.id')
             ->where('tbl_role_privileges.role_ID', (int) $roleId)
@@ -43,7 +52,7 @@ class RolePrivilegeModel extends Model
             ->get();
         foreach ($privileges as $row) {
             $route = $row->module_route ?? '';
-            if ($currentUri === $route || str_starts_with($currentUri, $route . '/')) {
+            if ($path === $route || (strlen($route) > 0 && str_starts_with($path, $route . '/'))) {
                 return $row;
             }
         }

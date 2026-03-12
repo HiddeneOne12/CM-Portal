@@ -1,4 +1,4 @@
-<form method="post" action="{{ url('/admin/acl/companies/edit/' . $row->id) }}">
+<form method="post" action="{{ url('/cmcontrol/acl/companies/edit/' . $row->id) }}">
     @csrf
     <input type="hidden" name="eid" value="{{ $row->id }}">
     <input type="hidden" name="company_token" value="{{ encryptIdForUrl($row->id) }}">

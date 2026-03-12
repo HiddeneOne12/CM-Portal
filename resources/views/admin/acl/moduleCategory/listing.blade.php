@@ -5,9 +5,11 @@
 @push('toolbar_actions')
 @if (validatePermissions('admin/acl/module-categories'))
 <div class="d-flex align-items-center gap-3 ms-auto">
+    @if(validatePermissions('admin/acl/module-categories/add'))
     <a href="javascript:void(0)" class="btn btn-primary btn-sm btn-add border-anchor">
         <i class="ki-duotone ki-plus fs-2"></i>Add Module Category
     </a>
+    @endif
     <div class="d-flex align-items-center position-relative">
         <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-5">
             <span class="path1"></span>
@@ -47,8 +49,12 @@
                     </div>
                 </div>
                 <div class="card-footer flex-wrap pt-0">
+                    @if(validatePermissions('admin/acl/module-categories/edit'))
                     <a href="javascript:void(0)" role="button" data-id="{{ $row->getKey() }}" data-token="{{ encryptIdForUrl($row->getKey()) }}" class="btn btn-light btn-active-light-primary btn-edit my-1">Edit</a>
+                    @endif
+                    @if(validatePermissions('admin/acl/module-categories/delete'))
                     <a href="javascript:void(0)" data-id="{{ encryptIdForUrl($row->getKey()) }}" class="btn btn-light btn-active-light-primary my-1 btn-delete"  data-confirm-delete="Delete this category?">Delete</a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -126,7 +132,7 @@ Swal.fire({
 });
 });
 document.addEventListener('DOMContentLoaded', function() {
-    var baseUrl = typeof admin_url !== 'undefined' ? admin_url : (window.location.origin + '/admin');
+    var baseUrl = typeof admin_url !== 'undefined' ? admin_url : (window.location.origin + '/cmcontrol');
     var ajaxHeaders = { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' };
 
     var drawerEl = document.getElementById('kt_drawer_chat');

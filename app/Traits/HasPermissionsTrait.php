@@ -30,12 +30,15 @@ trait HasPermissionsTrait
             return false;
         }
         $path = ltrim($path, '/');
-        if (!str_starts_with($path, 'admin/')) {
+        // URL prefix is cmcontrol; permission routes in DB use admin/ for matching
+        if (str_starts_with($path, 'cmcontrol/')) {
+            $path = 'admin/' . substr($path, strlen('cmcontrol/'));
+        } elseif (!str_starts_with($path, 'admin/')) {
             $path = 'admin/' . $path;
         }
         $adminRoles = AdminUserRoleModel::where('admin_ID', $adminUser->id)->get();
         foreach ($adminRoles as $rowAdminRole) {
-            $result = RolePrivilegeModel::hasPermission($rowAdminRole->role_ID, $path);
+            $result = RolePrivilegeModel::hasPermissionForPath($rowAdminRole->role_ID, $path);
             if ($result) {
                 return $result;
             }

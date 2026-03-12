@@ -27,17 +27,18 @@
                                                 <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">Dashboard</a>
                                             </li>
                                         @elseif ($resultLmModule->count() == 1)
-                                            @php $singleModule = $resultLmModule->first(); @endphp
+                                            @php $singleModule = $resultLmModule->first(); $navUrl = str_starts_with($singleModule->route ?? '', 'admin/') ? 'cmcontrol/' . substr($singleModule->route, 6) : ($singleModule->route ?? 'cmcontrol'); @endphp
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{ url($singleModule->route) }}">{{ $rowLmCat->category_name }}</a>
+                                                <a class="nav-link" href="{{ url($navUrl) }}">{{ $rowLmCat->category_name }}</a>
                                             </li>
                                         @else
                                             <li class="nav-item dropdown">
                                                 <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="dropdown-{{ $rowLmCat->getKey() }}" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" role="button">{{ $rowLmCat->category_name }}</a>
                                                 <ul class="dropdown-menu" aria-labelledby="dropdown-{{ $rowLmCat->getKey() }}">
                                                     @foreach ($resultLmModule as $module)
+                                                        @php $modUrl = str_starts_with($module->route ?? '', 'admin/') ? 'cmcontrol/' . substr($module->route, 6) : ($module->route ?? 'cmcontrol'); @endphp
                                                         <li>
-                                                            <a class="dropdown-item {{ Request::fullUrl() === url($module->route) ? 'active' : '' }}" href="{{ url($module->route) }}">{{ $module->module_name }}</a>
+                                                            <a class="dropdown-item {{ Request::fullUrl() === url($modUrl) ? 'active' : '' }}" href="{{ url($modUrl) }}">{{ $module->module_name }}</a>
                                                         </li>
                                                     @endforeach
                                                 </ul>
