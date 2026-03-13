@@ -5,15 +5,15 @@
 <div id="kt_header" class="header">
     <div class="header-top align-items-stretch flex-grow-1">
         <div class="d-flex align-items-stretch container-fluid">
-            <div class="d-flex align-items-center align-items-lg-stretch me-5 flex-row-fluid">
-                <button class="d-lg-none btn btn-icon btn-color-white bg-hover-white bg-hover-opacity-10 w-35px h-35px h-md-40px w-md-40px ms-n3 me-2" id="kt_header_navs_toggle">
+            <div class="d-flex align-items-center align-items-lg-stretch me-5 flex-row-fluid overflow-hidden">
+                <button class="d-lg-none btn btn-icon btn-color-white bg-hover-white bg-hover-opacity-10 w-35px h-35px h-md-40px w-md-40px ms-n3 me-2 flex-shrink-0" id="kt_header_navs_toggle">
                     <i class="ki-duotone ki-abstract-14 fs-2"><span class="path1"></span><span class="path2"></span></i>
                 </button>
-                <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center">
-                    <img alt="Logo" src="{{ asset('frontend/assets/images/logo-1.svg') }}" class="h-25px h-lg-30px admin-header-logo" style="height: 2rem;" />
+                <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center flex-shrink-0 me-3 me-lg-4" title="{{ config('global.SITE_NAME', 'Home') }}">
+                    <img alt="Logo" src="{{ asset('frontend/assets/images/logo-1.svg') }}" class="admin-header-logo" style="height: 2rem; max-height: 2rem; width: auto; display: block;" />
                 </a>
-                <div class="align-self-end" id="kt_brand_tabs">
-                    <div class="header-tabs mx-4 ms-lg-10 mb-5 mb-lg-0" id="kt_header_tabs">
+                <div class="align-self-end min-w-0 flex-grow-1" id="kt_brand_tabs">
+                    <div class="header-tabs mx-4 ms-lg-10" id="kt_header_tabs">
                         <ul class="nav flex-nowrap text-nowrap">
                             @if ($resultLmCat)
                                 @foreach ($resultLmCat as $rowLmCat)
@@ -62,12 +62,9 @@
             </div>
             <div class="d-flex align-items-center flex-row-auto">
                 {{-- User menu (CM portal logic: user_name, logout route) --}}
-                <div class="d-flex align-items-center ms-1" id="kt_header_user_menu_toggle">
-                    <div class="btn btn-flex align-items-center bg-hover-white bg-hover-opacity-10 py-2 ps-2 pe-2 me-n2" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                        <div class="d-none d-md-flex flex-column align-items-end justify-content-center me-2 me-md-4">
-                            <span class="text-white fs-8 fw-bold lh-1">{{ Auth::guard('admin')->user()->user_name }}</span>
-                        </div>
-                        <div class="symbol symbol-30px symbol-md-40px">
+                <div class="d-flex align-items-center ms-1 flex-shrink-0" id="kt_header_user_menu_toggle">
+                    <div class="btn btn-flex align-items-center justify-content-center bg-hover-white bg-hover-opacity-10 py-2 px-2" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" title="{{ Auth::guard('admin')->user()->user_name }}">
+                        <div class="symbol symbol-35px symbol-circle">
                             <img src="{{ photo(Auth::guard('admin')->user()->user_name) }}" alt="user" />
                         </div>
                     </div>

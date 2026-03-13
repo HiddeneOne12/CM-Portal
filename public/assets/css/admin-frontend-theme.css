@@ -49,12 +49,33 @@
     border-color: #5c3fa8 !important;
 }
 
-/* Header nav: inactive = white; selected = primary on white */
+/* Header nav: inactive = white; selected = primary on white; text centered */
+#kt_header .header-tabs .nav-item {
+    display: flex !important;
+    align-items: center !important;
+   
+}
 #kt_header .header-tabs .nav-link {
     color: #ffffff !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+
 }
 #kt_header .header-tabs .nav-link.active {
     color: #483183 !important;
+    border-radius: 999px !important;
+    
+}
+/* Dropdown toggle: same centered text */
+#kt_header .nav-item.dropdown .nav-link.dropdown-toggle {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
 }
 
 /* Bullet and accents */
@@ -77,6 +98,7 @@
 }
 #kt_header .nav {
     flex-wrap: nowrap;
+    align-items: center;
 }
 /* ACL dropdown: padding like Dashboard tab, white when not clicked */
 #kt_header .nav-item.dropdown button.nav-link.dropdown-toggle {
